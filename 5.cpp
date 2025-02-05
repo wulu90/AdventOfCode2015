@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string_view>
+#include <fstream>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ bool is_nice(string_view sv){
     if(is_vowel(sv[i])){
       ++vowel_count;
     }
-      
+
     if(i>0){
       if(!has_same&&p==sv[i]){
         has_same=true;
@@ -39,14 +40,15 @@ bool is_nice(string_view sv){
 
 void part1(){
   size_t res=0;
-  for(string str;getline(cin,str);){
+  ifstream input("input/input05");
+  for(string str;getline(input,str);){
     if(is_nice(str)){
       ++res;
     }
   }
   cout<<res<<endl;
 }
-  
+
 int main(){
   part1();
 }
