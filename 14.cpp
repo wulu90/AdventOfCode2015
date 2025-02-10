@@ -61,8 +61,10 @@ void part2() {
     const static int time = 2503;
 
     vector<int> deer_points(deer_vec.size(), 0);
+    multimap<int, size_t> dist_inx;
+
     for (int t = 1; t <= time; ++t) {
-        multimap<int, size_t> dist_inx;
+        dist_inx.clear();
         for (size_t i = 0; i < deer_vec.size(); ++i) {
             auto& rd    = deer_vec[i];
             int fly_num = t / (rd.fly + rd.rest);
