@@ -21,7 +21,7 @@ find_package(Boost CONFIG REQUIRED COMPONENTS json)
 target_link_libraries(day12 Boost::json)
 
 add_executable(day13 13.cpp)
-# add_executable(day14 14.cpp)
+add_executable(day14 14.cpp)
 # add_executable(day15 15.cpp)
 # add_executable(day16 16.cpp)
 # add_executable(day17 17.cpp)
