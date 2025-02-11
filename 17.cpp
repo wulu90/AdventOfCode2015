@@ -1,4 +1,5 @@
 #include <fstream>
+#include <map>
 #include <print>
 #include <vector>
 
@@ -21,7 +22,7 @@ void combination_sum(size_t inx, int curr_sum, vector<size_t> curr, vector<vecto
     }
 }
 
-void part1() {
+void part1_2() {
     ifstream input("input/input17");
     vector<int> vec;
     for (int i; input >> i;) {
@@ -31,10 +32,16 @@ void part1() {
     vector<vector<size_t>> combinatio_vec;
     combination_sum(0, 0, {}, combinatio_vec, 150, vec);
 
+    map<size_t, size_t> num_count;
+    for (auto& v : combinatio_vec) {
+        ++num_count[v.size()];
+    }
+
     println("{}", combinatio_vec.size());
+    println("{}", num_count.begin()->second);
 }
 
 int main() {
-    part1();
+    part1_2();
     return 0;
 }
