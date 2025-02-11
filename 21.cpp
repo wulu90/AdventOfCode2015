@@ -74,7 +74,7 @@ bool player_win(const item& p, const prop& boss) {
     return player_round_count <= boss_round_count;
 }
 
-void part1() {
+void part1_2() {
     ifstream input("input/input21");
     prop boss;
     string line;
@@ -94,16 +94,20 @@ void part1() {
     players              = combination(players, buy_at_most_two(rings));
 
     int min_gold = INT32_MAX;
+    int max_gold = 0;
     for (auto& it : players) {
         if (player_win(it, boss)) {
             min_gold = min(min_gold, it.cost);
+        } else {
+            max_gold = max(max_gold, it.cost);
         }
     }
 
     println("{}", min_gold);
+    println("{}", max_gold);
 }
 
 int main() {
-    part1();
+    part1_2();
     return 0;
 }
