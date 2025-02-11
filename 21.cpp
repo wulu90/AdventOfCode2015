@@ -63,8 +63,8 @@ vector<item> combination(const vector<item>& v1, const vector<item>& v2) {
 bool player_win(const item& p, const prop& boss) {
     const static int player_hit = 100;
 
-    auto damage_player_to_boss = p.damage - boss.armor;
-    auto damage_boss_to_player = boss.damage - p.armor;
+    auto damage_player_to_boss = p.damage > boss.armor ? p.damage - boss.armor : 1;
+    auto damage_boss_to_player = boss.damage > p.armor ? boss.damage - p.armor : 1;
 
     auto player_round_count = boss.hit_points % damage_player_to_boss == 0 ? boss.hit_points / damage_player_to_boss
                                                                            : boss.hit_points / damage_player_to_boss + 1;
