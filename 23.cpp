@@ -30,16 +30,7 @@ instruction parse(const string& str) {
     return {name, reg, off};
 }
 
-void part1() {
-    ifstream input("input/input23");
-
-    vector<instruction> ins_vec;
-    for (string line; getline(input, line);) {
-        ins_vec.push_back(parse(line));
-    }
-
-    static array<int, 2> regs;
-
+uint run(const vector<instruction>& ins_vec, array<uint, 2> regs) {
     size_t ins_inx = 0;
     while (ins_inx < ins_vec.size()) {
         auto& [name, reg, off] = ins_vec[ins_inx];
@@ -61,10 +52,22 @@ void part1() {
         }
     }
 
-    println("{}", regs[1]);
+    return regs[1];
+}
+
+void part1_2() {
+    ifstream input("input/input23");
+
+    vector<instruction> ins_vec;
+    for (string line; getline(input, line);) {
+        ins_vec.push_back(parse(line));
+    }
+
+    println("{}", run(ins_vec, {0, 0}));
+    println("{}", run(ins_vec, {1, 0}));
 }
 
 int main() {
-    part1();
+    part1_2();
     return 0;
 }
