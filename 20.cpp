@@ -47,11 +47,21 @@ int presents_sum(int num) {
     return sum;
 }
 
+int presents_sum_2(int num) {
+    int sum = 0;
+    for (int i = 1; i <= 50 && i * i <= num; ++i) {
+        if (num % i == 0) {
+            sum += num / i;
+        }
+    }
+    return sum;
+}
+
 void part2() {
     const int input = 34000000;
     int i           = 1;
     while (true) {
-        if (presents_sum(i) * 11 >= input) {
+        if (presents_sum_2(i) * 11 >= input) {
             break;
         }
         ++i;
